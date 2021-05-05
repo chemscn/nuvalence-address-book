@@ -1,3 +1,8 @@
 <div class="container">
-  <h1>HELLO ADDRESS BOOK</h1>
+  <ng-container *ngFor="let contact of contacts">
+    <p>
+      {{ contact.name.title }}. {{ contact.name.first }} {{ contact.name.last }}
+    </p>
+    <img height="30" width="30" [src]="contact.picture.thumbnail" />
+  </ng-container>
 </div>
