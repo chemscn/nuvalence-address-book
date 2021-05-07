@@ -13,21 +13,17 @@ body {
 }
 
 .card:hover {
-  background-color: rgb(216, 216, 216);
   color: black;
+  border: 2px solid $primary-yellow;
+  background-color: rgb(233, 230, 230);
 
   .rounded-circle {
     border: 2px solid $secondary-blue;
   }
 
   .media-link {
-    border: 1px solid $secondary-blue;
+    border: 2px solid $secondary-blue;
   }
-}
-
-.card-body {
-  justify-content: center;
-  align-items: center;
 }
 
 .card {
@@ -35,13 +31,19 @@ body {
   border-radius: 10px;
   justify-content: center;
   align-items: center;
-  padding: 10px;
+  padding: 40px;
+  width: 18rem;
+}
+
+.media {
+  justify-content: center;
+  align-items: center;
 }
 
 .media-link {
-  width: 40px;
-  height: 40px;
-  border: 1px solid $primary-red;
+  width: 50px;
+  height: 50px;
+  border: 2px solid $primary-red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,4 +58,22 @@ body {
   background: $primary-red;
   text-decoration: none;
   color: #fff;
+}
+
+ul {
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: $primary-red;
+  color: #fff;
+}
+.btn {
+  color: $primary-red;
+  background-color: #fff;
+  border: 1px solid $primary-red;
+}
+
+p {
+  padding-top: 5px;
 }
