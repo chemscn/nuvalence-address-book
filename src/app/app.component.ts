@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { RandomUsers, User } from './models';
+import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { User } from './models';
 import { UserService } from './services';
 
 @Component({
@@ -8,23 +8,10 @@ import { UserService } from './services';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent {
   title = 'nv-address-book';
-  subscriptions: Subscription = new Subscription();
-  contacts: User[] = [];
-  constructor(private userService: UserService) { }
-
-  ngOnInit() {
-    this.subscriptions.add(
-      this.userService.getSeededUserSet().subscribe((response: RandomUsers) => {
-        this.contacts = response.results;
-        console.log(this.contacts);
-      })
-    );
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.unsubscribe();
-
+  contacts: Observable<User[]>;
+  constructor(private userService: UserService) {
+    this.contacts = this.userService.getSeededUserSet();
   }
 }
