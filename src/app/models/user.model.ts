@@ -10,6 +10,7 @@ export interface User {
   dob: Dob;
   email: string;
   location: Location;
+  registered: Registered
 }
 
 export interface Name {
@@ -39,4 +40,9 @@ export interface Location {
 export interface Street {
   name: string;
   number: number;
+}
+
+export interface Registered {
+  age: number;
+  date: Date;
 }

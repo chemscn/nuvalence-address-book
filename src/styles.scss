@@ -1,2 +1,59 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "./global/colors.scss";
+
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.rounded-circle {
+  border: 2px solid $primary-red;
+}
+
+.card:hover {
+  background-color: rgb(216, 216, 216);
+  color: black;
+
+  .rounded-circle {
+    border: 2px solid $secondary-blue;
+  }
+
+  .media-link {
+    border: 1px solid $secondary-blue;
+  }
+}
+
+.card-body {
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  border: 2px solid $primary-blue;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.media-link {
+  width: 40px;
+  height: 40px;
+  border: 1px solid $primary-red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $primary-red;
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.media-link:hover,
+.media-link:focus {
+  background: $primary-red;
+  text-decoration: none;
+  color: #fff;
+}

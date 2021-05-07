@@ -1,24 +1,38 @@
 <div class="container">
-  <ng-container *ngFor="let contact of contacts">
-    <img height="30" width="30" [src]="contact.picture.thumbnail" />
-    <p>
-      {{ contact.name.title }}. {{ contact.name.first }} {{ contact.name.last }}
-    </p>
-    <p>
-      Phone: {{ contact.phone }}<br />
-      Cell: {{ contact.cell }} <br />
-      Email: {{ contact.email }}
-    </p>
-    <p>
-      Age: {{ contact.dob.age }}<br />
-      Date of Birth : {{ contact.dob.date | date }};
-    </p>
-    <p>
-      Address: {{ contact.location.street.number }}
-      {{ contact.location.street.name }}, <br />
-      {{ contact.location.city }}, {{ contact.location.state }},
-      {{ contact.location.postcode }} <br />
-      {{ contact.location.country }}
-    </p>
-  </ng-container>
+  <div class="row">
+    <div
+      style="width: 20rem"
+      *ngFor="let contact of contacts | async"
+      class="card mb-4 mr-2 ml-2"
+    >
+      <img
+        [src]="contact.picture.large"
+        alt=""
+        width="100"
+        class="img-fluid rounded-circle mb-3 img-large shadow-md"
+      />
+      <h5>
+        {{ contact.name.title }}. {{ contact.name.first }}
+        {{ contact.name.last }}
+      </h5>
+      <span class="small text-uppercase text-muted"></span>
+      <ul class="media mb-0 list-inline mt-3">
+        <li class="list-inline-item">
+          <a href="tel:{{ contact.phone }}" class="media-link"
+            ><i class="fa fa-phone"></i
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="tel:{{ contact.cell }}" class="media-link"
+            ><i class="fa fa-mobile"></i
+          ></a>
+        </li>
+        <li class="list-inline-item">
+          <a href="mailto:{{ contact.email }}" class="media-link"
+            ><i class="fa fa-envelope-open"></i
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
