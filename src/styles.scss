@@ -77,3 +77,19 @@ ul {
 p {
   padding-top: 5px;
 }
+
+.jumbotron {
+  border: 2px solid $primary-red;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: $primary-blue;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(0 123 255 / 25%);
+}
+
+label {
+  color: $primary-blue;
+}
