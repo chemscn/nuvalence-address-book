@@ -19,6 +19,9 @@
             class="form-control"
             placeholder="First Name"
           />
+          <div *ngIf="firstName.errors?.required" class="alert alert-danger">
+            First name is required
+          </div>
         </div>
         <div class="form-group col-md-6">
           <label>Last Name</label>
@@ -28,6 +31,9 @@
             class="form-control"
             placeholder="Last Name"
           />
+          <div *ngIf="lastName.errors?.required" class="alert alert-danger">
+            Last name is required
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -38,6 +44,9 @@
           class="form-control"
           placeholder="1234 Main St"
         />
+        <div *ngIf="address1.errors?.required" class="alert alert-danger">
+          Address is required
+        </div>
       </div>
       <div class="form-group">
         <label>Address 2</label>
@@ -52,17 +61,28 @@
         <div class="form-group col-md-6">
           <label>City</label>
           <input formControlName="city" type="text" class="form-control" />
+          <div *ngIf="city.errors?.required" class="alert alert-danger">
+            City is required
+          </div>
         </div>
         <div class="form-group col-md-4">
           <label>State</label>
           <select formControlName="state" class="form-control">
-            <option selected>Choose...</option>
-            <option>...</option>
+            <option value="" disabled>Select a State</option>
+            <option [value]="state" *ngFor="let state of states">
+              {{ state }}
+            </option>
           </select>
+          <div *ngIf="state.errors?.required" class="alert alert-danger">
+            State is required
+          </div>
         </div>
         <div class="form-group col-md-2">
           <label>Zip</label>
           <input formControlName="zip" type="text" class="form-control" />
+          <div *ngIf="zip.errors?.required" class="alert alert-danger">
+            Zip code is required
+          </div>
         </div>
       </div>
       <div class="center">
@@ -74,12 +94,7 @@
           Update
         </button>
         <ng-template #editForm>
-          <button
-            [disabled]="!userForm.valid && !userForm.pristine"
-            class="btn"
-          >
-            Submit
-          </button>
+          <button [disabled]="!userForm.valid" class="btn">Submit</button>
         </ng-template>
       </div>
     </form>

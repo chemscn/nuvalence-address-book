@@ -1,3 +1,4 @@
+import { StateService } from './../../services/state.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -13,6 +14,7 @@ export class UserDetailComponent implements OnInit {
   userForm: FormGroup;
   user: User;
   isUpdating: boolean = false;
+  states: string[] = [];
   get firstName(): FormControl {
     return this.userForm.get('firstName') as FormControl;
   }
@@ -34,19 +36,21 @@ export class UserDetailComponent implements OnInit {
   get zip(): FormControl {
     return this.userForm.get('zip') as FormControl;
   }
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private stateService: StateService) {
     this.user = this.userService.selectedUser;
     if (!this.user) {
       this.router.navigate(['/']);
     } else {
       const address1 = `${this.user.location.street.number} ${this.user.location.street.name}`;
+      this.states = this.stateService.getStates();
+      const stateValue = this.states.filter(x => x.toLowerCase() === this.user.location.state.toLowerCase())
       this.userForm = new FormGroup({
         firstName: new FormControl({ value: this.user.name.first, disabled: true }, Validators.required),
         lastName: new FormControl({ value: this.user.name.last, disabled: true }, Validators.required),
         address1: new FormControl({ value: address1, disabled: true }, Validators.required),
         address2: new FormControl(''),
         city: new FormControl({ value: this.user.location.city, disabled: true }, Validators.required),
-        state: new FormControl({ value: this.user.location.state, disabled: true }, Validators.required),
+        state: new FormControl({ value: stateValue, disabled: true }, Validators.required),
         zip: new FormControl({ value: this.user.location.postcode, disabled: true }, Validators.required),
       })
     }
