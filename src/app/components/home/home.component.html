@@ -16,18 +16,26 @@
 <div class="center">
   <ng-container *ngIf="this.pageCount === 1">
     <div class="button-group">
-      <button (click)="nextPage()" type="button" class="btn">Next</button>
+      <button (click)="nextPage()" type="button" class="btn btn-success">
+        Next
+      </button>
     </div>
   </ng-container>
   <ng-container *ngIf="this.pageCount === 2">
     <div class="button-group">
-      <button (click)="lastPage()" type="button" class="btn">Back</button>
-      <button (click)="nextPage()" type="button" class="btn">Next</button>
+      <button (click)="lastPage()" type="button" class="btn btn-danger">
+        Back
+      </button>
+      <button (click)="nextPage()" type="button" class="btn btn-success">
+        Next
+      </button>
     </div>
   </ng-container>
   <ng-container *ngIf="this.pageCount === 3">
     <div class="button-group">
-      <button (click)="lastPage()" type="button" class="btn">Back</button>
+      <button (click)="lastPage()" type="button" class="btn btn-danger">
+        Back
+      </button>
     </div>
   </ng-container>
 </div>

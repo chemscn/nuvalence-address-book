@@ -2,13 +2,13 @@ import { StateService } from './../../services/state.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models';
+import { Name, User } from 'src/app/models';
 import { UserService } from 'src/app/services';
 
 @Component({
   selector: 'user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.scss']
+  styleUrls: ['./user-detail.component.scss'],
 })
 export class UserDetailComponent implements OnInit {
   userForm: FormGroup;
@@ -36,37 +36,76 @@ export class UserDetailComponent implements OnInit {
   get zip(): FormControl {
     return this.userForm.get('zip') as FormControl;
   }
-  constructor(private userService: UserService, private router: Router, private stateService: StateService) {
+  get phoneNumber(): FormControl {
+    return this.userForm.get('phoneNumber') as FormControl;
+  }
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private stateService: StateService
+  ) {}
+
+  ngOnInit() {
     this.user = this.userService.selectedUser;
     if (!this.user) {
       this.router.navigate(['/']);
     } else {
       const address1 = `${this.user.location.street.number} ${this.user.location.street.name}`;
       this.states = this.stateService.getStates();
-      const stateValue = this.states.filter(x => x.toLowerCase() === this.user.location.state.toLowerCase())
+      const stateValue = this.states.filter(
+        (x) => x.toLowerCase() === this.user.location.state.toLowerCase()
+      );
       this.userForm = new FormGroup({
-        firstName: new FormControl({ value: this.user.name.first, disabled: true }, Validators.required),
-        lastName: new FormControl({ value: this.user.name.last, disabled: true }, Validators.required),
-        address1: new FormControl({ value: address1, disabled: true }, Validators.required),
-        address2: new FormControl(''),
-        city: new FormControl({ value: this.user.location.city, disabled: true }, Validators.required),
-        state: new FormControl({ value: stateValue, disabled: true }, Validators.required),
-        zip: new FormControl({ value: this.user.location.postcode, disabled: true }, Validators.required),
-      })
+        firstName: new FormControl(
+          { value: this.user.name.first, disabled: true },
+          Validators.required
+        ),
+        lastName: new FormControl(
+          { value: this.user.name.last, disabled: true },
+          Validators.required
+        ),
+        address1: new FormControl(
+          { value: address1, disabled: true },
+          Validators.required
+        ),
+        address2: new FormControl({ value: '', disabled: true }),
+        city: new FormControl(
+          { value: this.user.location.city, disabled: true },
+          Validators.required
+        ),
+        state: new FormControl(
+          { value: stateValue, disabled: true },
+          Validators.required
+        ),
+        zip: new FormControl(
+          { value: this.user.location.postcode, disabled: true },
+          Validators.required
+        ),
+        phoneNumber: new FormControl(
+          { value: this.user.phone, disabled: true },
+          Validators.required
+        ),
+      });
     }
-  }
-
-  ngOnInit() {
   }
 
   enableForm = () => {
     this.isUpdating = true;
-    this.firstName.enable();
-    this.lastName.enable();
-    this.address1.enable();
-    this.address2.enable();
-    this.city.enable();
-    this.state.enable();
-    this.zip.enable();
-  }
+    this.userForm.enable();
+  };
+
+  disableForm = () => {
+    this.isUpdating = false;
+    this.userForm.disable();
+  };
+
+  submitForm = () => {
+    if (this.userForm.valid) {
+      let updatedUser = new User();
+      let name = new Name();
+      name.first = this.firstName.value;
+      updatedUser.name = name;
+      console.log(updatedUser);
+    }
+  };
 }

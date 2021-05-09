@@ -2,7 +2,7 @@ export interface RandomUsers {
   results: User[];
 }
 
-export interface User {
+export class User {
   name: Name;
   picture: Picture;
   phone: string;
@@ -10,10 +10,10 @@ export interface User {
   dob: Dob;
   email: string;
   location: Location;
-  registered: Registered
+  registered: Registered;
 }
 
-export interface Name {
+export class Name {
   title: string;
   first: string;
   last: string;
