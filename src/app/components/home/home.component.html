@@ -1,5 +1,33 @@
 <div class="container">
-  <div class="card-deck">
-    <user-card *ngFor="let user of users | async" [user]="user"></user-card>
+  <div
+    *ngIf="isLoading; else loadedContent"
+    class="d-flex justify-content-center"
+  >
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
+  <ng-template #loadedContent>
+    <div class="card-deck">
+      <user-card *ngFor="let user of users" [user]="user"></user-card>
+    </div>
+  </ng-template>
+</div>
+<div class="center">
+  <ng-container *ngIf="this.pageCount === 1">
+    <div class="button-group">
+      <button (click)="nextPage()" type="button" class="btn">Next</button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="this.pageCount === 2">
+    <div class="button-group">
+      <button (click)="lastPage()" type="button" class="btn">Back</button>
+      <button (click)="nextPage()" type="button" class="btn">Next</button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="this.pageCount === 3">
+    <div class="button-group">
+      <button (click)="lastPage()" type="button" class="btn">Back</button>
+    </div>
+  </ng-container>
 </div>
