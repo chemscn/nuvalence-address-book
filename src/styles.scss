@@ -14,6 +14,8 @@ body {
 }
 .center {
   text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 .spinner-border {
   padding: 40px;
@@ -45,6 +47,8 @@ body {
 
 .card {
   border: 2px solid $primary-blue;
+  color: $primary-blue;
+  font-weight: bold;
   border-radius: 10px;
   justify-content: center;
   align-items: center;

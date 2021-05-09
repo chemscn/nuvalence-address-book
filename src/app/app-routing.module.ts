@@ -4,7 +4,8 @@ import { HomeComponent, UserDetailComponent } from './components';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'user-detail/:id', component: UserDetailComponent }
+  { path: 'user-detail', component: UserDetailComponent },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
