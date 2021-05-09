@@ -9,7 +9,7 @@
         class="img-fluid rounded-circle mb-3"
       />
     </div>
-    <form [formGroup]="userForm">
+    <form [formGroup]="userForm" (ngSubmit)="submitForm()">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label>First Name</label>
@@ -84,17 +84,38 @@
             Zip code is required
           </div>
         </div>
+        <div class="form-group col-md-2">
+          <label>Phone Number</label>
+          <input
+            formControlName="phoneNumber"
+            type="text"
+            class="form-control"
+          />
+          <div *ngIf="phoneNumber.errors?.required" class="alert alert-danger">
+            Phone number code is required
+          </div>
+        </div>
       </div>
       <div class="center">
-        <button
-          *ngIf="!isUpdating; else editForm"
-          (click)="enableForm()"
-          class="btn"
-        >
-          Update
-        </button>
+        <div *ngIf="!isUpdating; else editForm" class="btn-group">
+          <button routerLink="/" class="btn btn-danger">Back</button>
+          <button type="button" (click)="enableForm()" class="btn btn-success">
+            Update
+          </button>
+        </div>
         <ng-template #editForm>
-          <button [disabled]="!userForm.valid" class="btn">Submit</button>
+          <div class="btn-group">
+            <button (click)="disableForm()" class="btn btn-danger">
+              Cancel
+            </button>
+            <button
+              type="submit"
+              [disabled]="!userForm.valid"
+              class="btn btn-success"
+            >
+              Submit
+            </button>
+          </div>
         </ng-template>
       </div>
     </form>
