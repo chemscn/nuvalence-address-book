@@ -29,7 +29,7 @@ export interface Dob {
   date: Date;
 }
 
-export interface Location {
+export class Location {
   street: Street;
   city: string;
   state: string;

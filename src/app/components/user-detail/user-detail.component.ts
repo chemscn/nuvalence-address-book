@@ -2,7 +2,7 @@ import { StateService } from './../../services/state.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Name, User } from 'src/app/models';
+import { Name, User, Location } from 'src/app/models';
 import { UserService } from 'src/app/services';
 
 @Component({
@@ -101,11 +101,9 @@ export class UserDetailComponent implements OnInit {
 
   submitForm = () => {
     if (this.userForm.valid) {
-      let updatedUser = new User();
-      let name = new Name();
-      name.first = this.firstName.value;
-      updatedUser.name = name;
-      console.log(updatedUser);
+      //Nothing being submitted
+      console.log(this.userForm.value);
     }
+    this.router.navigate(['/update-success']);
   };
 }
