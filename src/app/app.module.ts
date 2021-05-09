@@ -5,13 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserCardComponent, UserDetailComponent, HomeComponent } from './components';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdateSuccessComponent } from './components/update-success/update-success.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserCardComponent,
     UserDetailComponent,
-    HomeComponent
+    HomeComponent,
+    UpdateSuccessComponent
   ],
   imports: [
     BrowserModule,
