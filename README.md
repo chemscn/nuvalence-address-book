@@ -8,7 +8,7 @@ To run this project you will first have to make sure you have the following:
 1. latest compatible version of nodejs <a>https://nodejs.org/en/</a>.
 2. If you already have node make sure the version is compatible with angular 11.2.x (10.13.x/12.11.x or later minor). For more visit <a>https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3</a>.
 3. To handle your node versioning consider installing node version manager. Afterwards, find a list of your installed versions by running the command `nvm list`. Once you found the version that is compatible, use `nvm use [version number here]`.
-4. On mac go to the root folder in a terminal and run `npm install`. If you didn't set up your credentials to properly, you might have to use the command `sudo npm install`. This command will install the `node-modules` folder required to build the application.
+4. On mac go to the root folder of the angular application in a terminal and run `npm install`. If you didn't set up your credentials to properly, you might have to use the command `sudo npm install`. This command will install the `node-modules` folder required to build the application.
 
 ## Development server
 
