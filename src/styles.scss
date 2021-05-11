@@ -3,9 +3,12 @@
 @import "~font-awesome/css/font-awesome.css";
 @import "./global/colors.scss";
 
+$padding: 10px;
+$thick-border: 2px;
+$thin-border: 1px;
 body {
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding-top: $padding * 3;
+  padding-bottom: $padding * 3;
   margin: 0 auto; /* Added */
   float: none; /* Added */
 }
@@ -14,39 +17,39 @@ body {
 }
 .center {
   text-align: center;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: $padding;
+  padding-bottom: $padding;
 }
 .spinner-border {
-  padding: 40px;
+  padding: $padding * 4;
 }
 .justify-content-center {
-  padding: 30px;
+  padding: $padding * 3;
 }
 .text-primary {
   color: $primary-red !important;
 }
 
 .rounded-circle {
-  border: 2px solid $primary-red;
+  border: $thick-border solid $primary-red;
 }
 
 .card:hover {
   color: black;
-  border: 2px solid $primary-yellow;
+  border: $thick-border solid $primary-yellow;
   background-color: rgb(233, 230, 230);
 
   .rounded-circle {
-    border: 2px solid $secondary-blue;
+    border: $thick-border solid $secondary-blue;
   }
 
   .media-link {
-    border: 1px solid $primary-red;
+    border: $thin-border solid $primary-red;
   }
 }
 
 .card {
-  border: 2px solid $primary-blue;
+  border: $thick-border solid $primary-blue;
   color: $primary-blue;
   font-weight: bold;
   border-radius: 10px;
@@ -67,7 +70,7 @@ body {
 .media-link {
   width: 50px;
   height: 50px;
-  border: 1px solid $primary-red;
+  border: $thin-border solid $primary-red;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -93,11 +96,11 @@ ul {
 }
 
 p {
-  padding-top: 5px;
+  padding-top: $padding / 2;
 }
 
 .jumbotron {
-  border: 2px solid $primary-red;
+  border: $thick-border solid $primary-red;
 }
 
 .form-control:focus {
