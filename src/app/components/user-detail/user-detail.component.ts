@@ -50,44 +50,48 @@ export class UserDetailComponent implements OnInit {
     if (!this.user) {
       this.router.navigate(['/']);
     } else {
-      const address1 = `${this.user.location.street.number} ${this.user.location.street.name}`;
-      this.states = this.stateService.getStates();
-      const stateValue = this.states.filter(
-        (x) => x.toLowerCase() === this.user.location.state.toLowerCase()
-      );
-      this.userForm = new FormGroup({
-        firstName: new FormControl(
-          { value: this.user.name.first, disabled: true },
-          Validators.required
-        ),
-        lastName: new FormControl(
-          { value: this.user.name.last, disabled: true },
-          Validators.required
-        ),
-        address1: new FormControl(
-          { value: address1, disabled: true },
-          Validators.required
-        ),
-        address2: new FormControl({ value: '', disabled: true }),
-        city: new FormControl(
-          { value: this.user.location.city, disabled: true },
-          Validators.required
-        ),
-        state: new FormControl(
-          { value: stateValue, disabled: true },
-          Validators.required
-        ),
-        zip: new FormControl(
-          { value: this.user.location.postcode, disabled: true },
-          Validators.required
-        ),
-        phoneNumber: new FormControl(
-          { value: this.user.phone, disabled: true },
-          Validators.required
-        ),
-      });
+      this.initializeForm();
     }
   }
+
+  initializeForm = () => {
+    const address1 = `${this.user.location.street.number} ${this.user.location.street.name}`;
+    this.states = this.stateService.getStates();
+    const stateValue = this.states.filter(
+      (x) => x.toLowerCase() === this.user.location.state.toLowerCase()
+    );
+    this.userForm = new FormGroup({
+      firstName: new FormControl(
+        { value: this.user.name.first, disabled: true },
+        Validators.required
+      ),
+      lastName: new FormControl(
+        { value: this.user.name.last, disabled: true },
+        Validators.required
+      ),
+      address1: new FormControl(
+        { value: address1, disabled: true },
+        Validators.required
+      ),
+      address2: new FormControl({ value: '', disabled: true }),
+      city: new FormControl(
+        { value: this.user.location.city, disabled: true },
+        Validators.required
+      ),
+      state: new FormControl(
+        { value: stateValue, disabled: true },
+        Validators.required
+      ),
+      zip: new FormControl(
+        { value: this.user.location.postcode, disabled: true },
+        Validators.required
+      ),
+      phoneNumber: new FormControl(
+        { value: this.user.phone, disabled: true },
+        Validators.required
+      ),
+    });
+  };
 
   enableForm = () => {
     this.isUpdating = true;
@@ -97,6 +101,7 @@ export class UserDetailComponent implements OnInit {
   disableForm = () => {
     this.isUpdating = false;
     this.userForm.disable();
+    this.initializeForm();
   };
 
   submitForm = () => {
