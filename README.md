@@ -3,7 +3,7 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.10.
 
 ## Getting Started
-
+Start out by cloning this repository into a file path of your chossing. From command line `git clone https://github.com/chemscn/nuvalence-address-book.git `
 To run this project you will first have to make sure you have the following:
 1. latest compatible version of nodejs <a>https://nodejs.org/en/</a>.
 2. If you already have node make sure the version is compatible with angular 11.2.x (10.13.x/12.11.x or later minor). For more visit <a>https://gist.github.com/LayZeeDK/c822cc812f75bb07b7c55d07ba2719b3</a>.
